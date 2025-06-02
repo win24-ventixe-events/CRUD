@@ -41,4 +41,5 @@ public class EventRepository(DbAppContext context)
         _dbSet.Update(entity);
         await context.SaveChangesAsync();
     }
+    
 }

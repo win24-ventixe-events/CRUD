@@ -28,6 +28,9 @@ public class EventEntity
     [StringLength(25)]
     public string Category { get; set; } = null!;
     
+    [StringLength(150)]
+    public string? ImageUrl { get; set; }
+    
     [Required]
     [StringLength(150)]
     public string Location { get; set; } = null!;

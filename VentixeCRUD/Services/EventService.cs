@@ -24,7 +24,10 @@ public class EventService(EventRepository repository)
     {
         try
         {
-            return await repository.GetAllAsync();
+            var utcNow = DateTime.UtcNow.Date;
+            var events = await repository.GetAllAsync();
+            var eventsSorted = events.Where(e => e.DateFrom >= utcNow).OrderBy(e => e.DateFrom).ToList();
+            return eventsSorted;
         }
         catch (Exception e)
         {
@@ -63,7 +66,7 @@ public class EventService(EventRepository repository)
             var entityToDelete = await GetByIdAsync(id);
             if (entityToDelete == null)
             {
-                throw new Exception("Project not found");
+                throw new Exception("Event not found");
             }
 
             
