@@ -14,7 +14,7 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowReact",
         policy => policy
-            .AllowAnyOrigin()
+            .WithOrigins("https://lively-pebble-05bdf8603.6.azurestaticapps.net/")
             .AllowAnyHeader()
             .AllowAnyMethod());
 });
